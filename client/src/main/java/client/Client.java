@@ -4,7 +4,7 @@ import interaction.Request;
 import interaction.Response;
 import sub.StringConstants;
 
-import javax.xml.bind.JAXBException;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;

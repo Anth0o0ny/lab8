@@ -6,7 +6,7 @@ import client.ClientReceiver;
 import sub.StringConstants;
 import sub.CommandsEnum;
 
-import javax.xml.bind.JAXBException;
+
 import java.util.Optional;
 
 public class Info extends ClientCommand {

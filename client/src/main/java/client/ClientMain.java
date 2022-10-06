@@ -2,7 +2,7 @@ package client;
 
 import sub.StringConstants;
 
-import javax.xml.bind.JAXBException;
+
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 

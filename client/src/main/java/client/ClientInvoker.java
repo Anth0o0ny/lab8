@@ -4,7 +4,7 @@ import commands.*;
 import interaction.Request;
 import sub.CommandsEnum;
 
-import javax.xml.bind.JAXBException;
+
 import java.util.HashMap;
 import java.util.Optional;
 

@@ -1,14 +1,11 @@
 package baseclasses;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 import java.util.Date;
 
 
-@XmlRootElement(name = "movie")
-@XmlAccessorType(XmlAccessType.FIELD)
+
 
 public class Movie implements Comparable<Movie>, Serializable {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически

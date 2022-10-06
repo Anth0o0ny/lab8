@@ -3,7 +3,7 @@ package baseclasses;
 
 
 
-import javax.xml.bind.annotation.XmlElement;
+
 import java.io.Serializable;
 
 public class Person implements Serializable {
@@ -36,7 +36,7 @@ public class Person implements Serializable {
         return name;
     }
 
-    @XmlElement
+
     public void setName(String name) {
         this.name = name;
     }
@@ -45,7 +45,7 @@ public class Person implements Serializable {
         return height;
     }
 
-    @XmlElement
+
     public void setHeight(float height) {
         this.height = height;
     }
@@ -54,7 +54,7 @@ public class Person implements Serializable {
         return hairColor;
     }
 
-    @XmlElement
+
     public void setHairColor(Color hairColor) {
         this.hairColor = hairColor;
     }
@@ -63,7 +63,7 @@ public class Person implements Serializable {
         return nationality;
     }
 
-    @XmlElement
+
     public void setNationality(Country nationality) {
         this.nationality = nationality;
     }
