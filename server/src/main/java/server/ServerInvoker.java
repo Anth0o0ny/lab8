@@ -28,10 +28,15 @@ public class ServerInvoker {
 
     public Optional<Response> execute(Request request){
         String commandName = request.getCommandName();
-        if (request.getLogin() == null || request.getPassword() == null
-                || request.getLogin().equals("") && !commandName.equals("authorization")) {
-            return Optional.of(new Response(StringConstants.Server.CANT_EXECUTE_NOT_AUTH));
-        }
+
+        //clean
+        System.out.println( request.getLogin() + " " + request.getPassword());
+
+
+//        if (request.getLogin() == null || request.getPassword() == null
+//                || request.getLogin().equals("") && !commandName.equals("authorization")) {
+//            return Optional.of(new Response(StringConstants.Server.CANT_EXECUTE_NOT_AUTH));
+//        }
 
         return this.commandsMap.get(commandName).execute(request);
     }

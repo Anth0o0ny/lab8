@@ -61,9 +61,6 @@ public class Terminal {
     public void inputKeyboard() throws NoSuchElementException {
         this.scanner = new Scanner(System.in);
 
-
-       helloUser();
-
         while (true) {
 
             System.out.println(StringConstants.StartTreatment.ENTER_COMMAND);
@@ -118,43 +115,44 @@ public class Terminal {
         }
     }
 
-    private void authorization(){
-        System.out.println(StringConstants.StartTreatment.AUTH_ENTER_LOGIN);
-        System.out.print(">");
-        login = scanner.nextLine();
-        System.out.println(StringConstants.StartTreatment.AUTH_ENTER_PASS);
-        System.out.print(">");
-        password = scanner.nextLine();
-        Request authorizateRequest = new Request("authorization");
-        authorizateRequest.setLogin(login);
-        authorizateRequest.setPassword(password);
-        client.sendRequest(authorizateRequest);
-        Optional<Response> optionalResponse = client.getResponse();
-        if (optionalResponse.isPresent()){
-            Response response = optionalResponse.get();
-            if (!response.getMessage().isEmpty()){
-                System.out.println(response.getMessage());
-                authorization();
-            }
-        }
-    }
+//    private void authorization(){
+//        System.out.println(StringConstants.StartTreatment.AUTH_ENTER_LOGIN);
+//        System.out.print(">");
+//        login = scanner.nextLine();
+//        System.out.println(StringConstants.StartTreatment.AUTH_ENTER_PASS);
+//        System.out.print(">");
+//        password = scanner.nextLine();
+//        Request authorizateRequest = new Request("authorization");
+//        authorizateRequest.setLogin(login);
+//        authorizateRequest.setPassword(password);
+//        client.sendRequest(authorizateRequest);
+//        Optional<Response> optionalResponse = client.getResponse();
+//        if (optionalResponse.isPresent()){
+//            Response response = optionalResponse.get();
+//            if (!response.getMessage().isEmpty()){
+//                System.out.println(response.getMessage());
+//                authorization();
+//            }
+//        }
+//        System.out.println(StringConstants.StartTreatment.ENTER_IN_SYSTEM_BY_NAME + login);
+//    }
 
-    private void helloUser(){
-        System.out.println(StringConstants.StartTreatment.ASK_TO_AUTH + StringConstants.StartTreatment.Y_OR_N);
-        while (true) {
-            System.out.print(">");
-            String answer = scanner.nextLine().trim().toLowerCase(Locale.ROOT);
-            if (answer.equals("y")){
-                authorization();
-                System.out.println(StringConstants.StartTreatment.ENTER_IN_SYSTEM_BY_NAME + login);
-                return;
-            }else if (answer.equals("n")){
-                System.out.println(StringConstants.StartTreatment.ENTER_IN_SYSTEM_BY_GUEST);
-                return;
-            }
-            System.out.println(StringConstants.StartTreatment.Y_OR_N);
-        }
-    }
+//    private void helloUser(){
+//        System.out.println(StringConstants.StartTreatment.ASK_TO_AUTH + StringConstants.StartTreatment.Y_OR_N);
+//        while (true) {
+//            System.out.print(">");
+//            String answer = scanner.nextLine().trim().toLowerCase(Locale.ROOT);
+//            if (answer.equals("y")){
+//                authorization();
+//                System.out.println(StringConstants.StartTreatment.ENTER_IN_SYSTEM_BY_NAME + login);
+//                return;
+//            }else if (answer.equals("n")){
+//                System.out.println(StringConstants.StartTreatment.ENTER_IN_SYSTEM_BY_GUEST);
+//                return;
+//            }
+//            System.out.println(StringConstants.StartTreatment.Y_OR_N);
+//        }
+//    }
 
 
 

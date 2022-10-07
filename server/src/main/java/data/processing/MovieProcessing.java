@@ -42,7 +42,7 @@ public class MovieProcessing extends Database implements MovieDAO {
             preparedStatement.setLong(6, movie.getBudget());
             preparedStatement.setString(7, movie.getTagline());
             preparedStatement.setString(8, movie.getMpaaRating().toString());
-            preparedStatement.setString(9, movie.getScreenwriter().getName());
+            preparedStatement.setString(9, movie.getScreenwriter().getPersonName());
             preparedStatement.setFloat(10, movie.getScreenwriter().getHeight());
             preparedStatement.setString(11, movie.getScreenwriter().getHairColor().toString());
             preparedStatement.setString(12, movie.getScreenwriter().getNationality().toString());
@@ -173,7 +173,7 @@ public class MovieProcessing extends Database implements MovieDAO {
             preparedStatement.setLong(6, movie.getBudget());
             preparedStatement.setString(7, movie.getTagline());
             preparedStatement.setString(8, movie.getMpaaRating().toString());
-            preparedStatement.setString(9, movie.getScreenwriter().getName());
+            preparedStatement.setString(9, movie.getScreenwriter().getPersonName());
             preparedStatement.setFloat(10, movie.getScreenwriter().getHeight());
             preparedStatement.setString(11, movie.getScreenwriter().getHairColor().toString());
             preparedStatement.setString(12, movie.getScreenwriter().getNationality().toString());

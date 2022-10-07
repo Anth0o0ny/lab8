@@ -1,5 +1,6 @@
 package server;
 
+import baseclasses.MoviesCollection;
 import interaction.Request;
 import interaction.Response;
 import sub.StringConstants;
@@ -71,14 +72,20 @@ public class ServerMain {
                             class Action2 extends RecursiveAction {
                                 @Override
                                 protected void compute() {
-                                    Optional<Response> optionalResponse = null;
+                                    if (request.getCommandName().equals("update_table")){
+                                        server.sendResponse(serverReceiver.getCollection(), key);
+                                    } else {
+
+
+                                        Optional<Response> optionalResponse = null;
 
                                         optionalResponse = serverInvoker.execute(request);
 
 
-                                    if (optionalResponse.isPresent()) {
-                                        Response response = optionalResponse.get();
-                                        server.sendResponse(response, key);
+                                        if (optionalResponse.isPresent()) {
+                                            Response response = optionalResponse.get();
+                                            server.sendResponse(response, key);
+                                        }
                                     }
                                 }
                             }

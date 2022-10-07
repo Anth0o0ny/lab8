@@ -86,7 +86,8 @@ public class Client {
             byte[] sendArray = byteArrayOutputStream.toByteArray();
             socket.getOutputStream().write(sendArray);
         } catch (SocketException e){
-            System.out.println(StringConstants.Client.SEND_REQUEST_CANT_CONNECT);
+//            System.out.println(StringConstants.Client.SEND_REQUEST_CANT_CONNECT);
+            e.printStackTrace();
 //            reconnect();
         } catch (IOException e) {
             System.out.println(StringConstants.Client.SEND_REQUEST_FAILED);;

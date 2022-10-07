@@ -28,7 +28,10 @@ public class ServerReceiver {
         mc = new MoviesCollection();
         collection = mc.getCollection();
         creationDate = new Date();
+
     }
+
+
 
     public Response authorization(String login, String password) {
 
@@ -187,7 +190,7 @@ public class ServerReceiver {
         reentrantLock.lock();
         try{
             if (movieProcessing.removeAllByScreenwriter(arg, login)) {
-                collection.removeIf(movie -> movie.getScreenwriter().getName().equals(arg) &&
+                collection.removeIf(movie -> movie.getScreenwriter().getPersonName().equals(arg) &&
                         movie.getLogin().equals(login));
                 return new Response(StringConstants.PatternCommands.RECEIVER_REMOVE_ALL_BY_SCREENWRITER_RESULT + arg);
             } else {
@@ -289,6 +292,11 @@ public class ServerReceiver {
 
     void initCollection(){
         collection = movieProcessing.readAll();
+    }
+    public Response getCollection(){
+        Response response = new Response("");
+        response.setCollection((Stack<Movie>) movieProcessing.readAll());
+        return response;
     }
 }
 

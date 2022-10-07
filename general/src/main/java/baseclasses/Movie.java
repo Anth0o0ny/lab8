@@ -3,8 +3,7 @@ package baseclasses;
 
 import java.io.Serializable;
 import java.util.Date;
-
-
+import java.util.Objects;
 
 
 public class Movie implements Comparable<Movie>, Serializable {
@@ -47,6 +46,8 @@ public class Movie implements Comparable<Movie>, Serializable {
 
 
     }
+
+
 
 
     @Override
@@ -137,5 +138,18 @@ public class Movie implements Comparable<Movie>, Serializable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return name.equals(movie.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, coordinates, creationDate, oscarsCount, budget, tagline, mpaaRating, screenwriter, login);
     }
 }
