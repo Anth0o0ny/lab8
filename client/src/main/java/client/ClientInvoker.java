@@ -25,8 +25,6 @@ public class ClientInvoker {
     }
 
 
-
-
     public HashMap<String, ClientCommand> getCommandMap() {
         return this.commandsMap;
     }
@@ -45,8 +43,6 @@ public class ClientInvoker {
                 return Optional.of(new Help(clientReceiver));
             case INFO:
                 return Optional.of(new Info(clientReceiver));
-            case SHOW:
-                return Optional.of(new Show(clientReceiver));
             case ADD:
                 return Optional.of(new Add(clientReceiver));
             case UPDATE:
@@ -70,8 +66,7 @@ public class ClientInvoker {
                 return Optional.of(new RemoveAllByScreenwriter(clientReceiver));
             case GROUP_COUNTING_BY_TAGLINE:
                 return Optional.of(new GroupCountingByTagline(clientReceiver));
-            case PRINT_DESCENDING:
-                return Optional.of(new PrintDescending(clientReceiver));
+
             case AUTHORIZATION:
             default:
                 return Optional.empty();

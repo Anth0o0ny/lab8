@@ -11,10 +11,10 @@ public class ClientReceiver {
 
       private final InputArgumentTester inputArgumentTester;
       private final AddMovie addMovie;
+
     public ClientReceiver() {
         this.addMovie = new AddMovie();
         inputArgumentTester = new InputArgumentTester();
-
     }
 
     public Optional<Request> removeById(String arg) {
@@ -23,6 +23,11 @@ public class ClientReceiver {
             return Optional.empty();
         }
         return Optional.of(new Request("remove_by_id", arg));
+    }
+
+    public Optional<Request> exit(){
+        System.exit(0);
+        return Optional.empty();
     }
 
     public Optional<Request> removeAllByScreenwriter(String arg) {

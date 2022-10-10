@@ -7,14 +7,13 @@ package input;
 import baseclasses.Color;
 import baseclasses.Country;
 import baseclasses.MpaaRating;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import sub.StringConstants;
 
-
-import java.util.Scanner;
-
 public class InputArgumentTester {
+    String name ;
 
-    Scanner sc = new Scanner(System.in);
+
 
     public  Long assignInputId(String arg) {
         long id;
@@ -29,22 +28,35 @@ public class InputArgumentTester {
         return id;
     }
 
+
+    String fromField;
+
+    public void setFromField(String fromField) {
+        this.fromField = fromField;
+    }
+
+
     public String assignInputName() {
-        String name;
-        do {
-            System.out.println(StringConstants.MovieMaking.ENTER_MOVIE_NAME);
-            System.out.print(">");
+        System.out.println("Starts name");
+        System.out.println(fromField);
+//        do {
             try {
-                name = sc.nextLine();
-                if (name.isEmpty()) {
+                name = fromField;
+                if (fromField.isEmpty()) {
                     throw new RuntimeException();
                 }
             } catch (RuntimeException ex) {
                 System.out.println(StringConstants.MovieMaking.WRONG_NAME);
                 name = null;
             }
-        } while (name == null);
+//        } while (name == null);
         return name;
+        }
+
+
+    String xField;
+    public void setxField(String xField) {
+        this.xField = xField;
     }
 
     public Double assignInputX() {
@@ -52,9 +64,9 @@ public class InputArgumentTester {
         do {
             System.out.println( StringConstants.MovieMaking.ENTER_COORDINATE + " x: ");
             System.out.print(">");
-            String inp = sc.nextLine();
+
             try {
-                x = Double.parseDouble(inp);
+                x = Double.parseDouble(xField);
                 if (x > 398) {
                     throw new NumberFormatException();
                 }
@@ -66,14 +78,21 @@ public class InputArgumentTester {
         return x;
     }
 
+
+    String yField;
+
+    public void setyField(String yField) {
+        this.yField = yField;
+    }
+
     public Float assignInputY() {
         Float y;
         do {
             System.out.println( StringConstants.MovieMaking.ENTER_COORDINATE + " y: ");
             System.out.print(">");
-            String inp = sc.nextLine();
+
             try {
-                y = Float.parseFloat(inp);
+                y = Float.parseFloat(yField);
             } catch (NumberFormatException ex) {
                 System.out.println(StringConstants.MovieMaking.WRONG_Y_COORDINATE);
                 y = null;
@@ -82,14 +101,20 @@ public class InputArgumentTester {
         return y;
     }
 
+
+    public void setOscarField(String oscarField) {
+        this.oscarField = oscarField;
+    }
+
+    String oscarField;
     public Long assignInputOscarCount() {
         Long oscCount;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_OSCAR_COUNT);
             System.out.print(">");
-            String inp = sc.nextLine();
+
             try {
-                oscCount = Long.parseLong(inp);
+                oscCount = Long.parseLong(oscarField);
                 if (oscCount <= 0) {
                     throw new NumberFormatException();
                 }
@@ -101,14 +126,21 @@ public class InputArgumentTester {
         return oscCount;
     }
 
+
+    String budgetField;
+
+    public void setBudgetField(String budgetField) {
+        this.budgetField = budgetField;
+    }
+
     public long assignInputBudget() {
         long budget;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_BUDGET);
             System.out.print(">");
-            String inp = sc.nextLine();
+
             try {
-                budget = Long.parseLong(inp);
+                budget = Long.parseLong(budgetField);
                 if (budget <= 0) {
                     throw new NumberFormatException();
                 }
@@ -120,13 +152,20 @@ public class InputArgumentTester {
         return budget;
     }
 
+
+
+    public void setTaglineField(String taglineField) {
+        this.taglineField = taglineField;
+    }
+
+    String taglineField;
     public String assignTagline() {
         String tagline;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_TAGLINE);
             System.out.print(">");
             try {
-                tagline = sc.nextLine();
+                tagline = taglineField;
                 if (tagline.length() > 158) {
                     throw new RuntimeException();
                 }
@@ -139,9 +178,13 @@ public class InputArgumentTester {
     }
 
 
+    public void setMpaaField(MpaaRating mpaaField) {
+        this.mpaaField = mpaaField;
+    }
 
+    MpaaRating mpaaField;
     public MpaaRating assignMpaaRating() {
-        byte rateNum;
+        byte rateNum = 0;
         MpaaRating res = null;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_MPAA_RATING);
@@ -149,11 +192,12 @@ public class InputArgumentTester {
                 System.out.println((i + 1) + ". " + MpaaRating.values()[i]);
             }
             System.out.print(">");
-            String inp = sc.nextLine();
+
 
             try {
-                rateNum = Byte.parseByte(inp);
-                res = MpaaRating.values()[rateNum - 1];
+//                rateNum = Byte.parseByte(mpaaField);
+//                res = MpaaRating.values()[rateNum - 1];
+                res = mpaaField;
             } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
                 System.out.println(StringConstants.MovieMaking.WRONG_MPAA_RATING);
                 rateNum = 0;
@@ -164,13 +208,20 @@ public class InputArgumentTester {
     }
 
 
+
+    String personNameField;
+
+    public void setPersonNameField(String personNameField) {
+        this.personNameField = personNameField;
+    }
+
     public String assignInputPersonName(){
         String name;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_PERSON_NAME);
             System.out.print(">");
             try {
-                name = sc.nextLine();
+                name = personNameField;
                 if (name.isEmpty()) {
                     throw new RuntimeException();
                 }
@@ -182,14 +233,22 @@ public class InputArgumentTester {
         return name;
     }
 
+
+
+    String heightField;
+
+    public void setHeightField(String heightField) {
+        this.heightField = heightField;
+    }
+
     public float assignInputHeight(){
         float height;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_HEIGHT);
             System.out.print(">");
-            String inp = sc.nextLine();
+
             try {
-                height = Float.parseFloat(inp);
+                height = Float.parseFloat(heightField);
                 if (height <= 0) {
                     throw new NumberFormatException();
                 }
@@ -201,8 +260,18 @@ public class InputArgumentTester {
         return height;
     }
 
+
+
+
+
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    Country country;
     public Country assignInputCountry(){
-        byte countryNum;
+        byte countryNum = 0;
         Country res = null;
         do {
             System.out.println(StringConstants.MovieMaking.ENTER_COUNTRY);
@@ -210,10 +279,11 @@ public class InputArgumentTester {
                 System.out.println((i + 1) + ". " + Country.values()[i]);
             }
             System.out.print(">");
-            String inp = sc.nextLine();
+            String inp = null;
             try {
-                countryNum = Byte.parseByte(inp);
-                res = Country.values()[countryNum - 1];
+//                countryNum = Byte.parseByte(inp);
+//                res = Country.values()[countryNum - 1];
+                res = country;
             } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
                 System.out.println(StringConstants.MovieMaking.WRONG_COUNTRY);
                 countryNum = 0;
@@ -226,8 +296,16 @@ public class InputArgumentTester {
 
 
 
+
+
+Color color;
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public Color assignInputColor(){
-        byte colorNum;
+        byte colorNum = 0;
         Color res = null;
 
         do {
@@ -237,10 +315,11 @@ public class InputArgumentTester {
                 System.out.println((i + 1) + ". " + Color.values()[i]);
             }
             System.out.print(">");
-            String inp = sc.nextLine();
+            String inp = null;
             try {
-                colorNum = Byte.parseByte(inp);
-                res = Color.values()[colorNum - 1];
+//                colorNum = Byte.parseByte(inp);
+//                res = Color.values()[colorNum - 1];
+                res = color;
             } catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
                 System.out.println(StringConstants.MovieMaking.WRONG_COLOR);
                 colorNum = 0;

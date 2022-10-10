@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="873.0" style="-fx-background-color: #3B3B3B;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMovieController">
+   <children>
+      <AnchorPane layoutY="125.0" prefHeight="659.0" prefWidth="873.0" style="-fx-background-color: #858585;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="45.0" prefHeight="35.0" prefWidth="59.0" text="Name:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="204.0" layoutY="106.0" text="x:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="400.0" layoutY="106.0" text="y:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="157.0" text="Oscar count:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="208.0" text="Budget:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="136.0" layoutY="258.0" text="Tagline:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="116.0" layoutY="311.0" text="MPAA rating:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="137.0" layoutY="382.0" text="Name:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="133.0" layoutY="438.0" text="Height:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="127.0" layoutY="495.0" text="Hair color:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="548.0" text="Nationality:">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Text layoutX="193.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <TextField fx:id="movieNameField" layoutX="221.0" layoutY="50.0" prefHeight="25.0" prefWidth="385.0" />
+            <Label layoutX="115.0" layoutY="98.0" prefHeight="35.0" prefWidth="87.0" text="Coordinates">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="364.0" layoutY="332.0">
+               <font>
+                  <Font name="Book Antiqua" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="384.0" layoutY="19.0" text="Movie">
+               <font>
+                  <Font name="Book Antiqua" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="coordinatesXField" layoutX="221.0" layoutY="103.0" />
+            <TextField fx:id="coordinatesYField" layoutX="421.0" layoutY="103.0" />
+            <TextField fx:id="oscarCountField" layoutX="221.0" layoutY="154.0" />
+            <TextField fx:id="budgetField" layoutX="221.0" layoutY="205.0" />
+            <TextField fx:id="taglineField" layoutX="221.0" layoutY="255.0" prefHeight="25.0" prefWidth="385.0" />
+            <TextField fx:id="screenwriterNameField" layoutX="221.0" layoutY="379.0" prefHeight="25.0" prefWidth="385.0" />
+            <TextField fx:id="heightField" layoutX="221.0" layoutY="435.0" />
+            <ComboBox fx:id="mpaaRatingField" layoutX="221.0" layoutY="308.0" prefWidth="150.0" />
+            <ComboBox fx:id="hairColorField" layoutX="221.0" layoutY="492.0" prefWidth="150.0" />
+            <ComboBox fx:id="nationalityField" layoutX="221.0" layoutY="545.0" prefWidth="150.0" />
+            <Label layoutX="354.0" layoutY="343.0" text="Screenwriter">
+               <font>
+                  <Font name="Book Antiqua" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="addButton" layoutX="343.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" text="Movie shot">
+               <font>
+                  <Font name="Book Antiqua" size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="wrongNameField" layoutX="221.0" layoutY="72.0" textFill="RED" />
+            <Label layoutX="221.0" layoutY="125.0" text="Label" textFill="RED" />
+            <Label layoutX="423.0" layoutY="125.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="176.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="227.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="277.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="401.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="457.0" text="Label" textFill="RED" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="14.0" prefHeight="95.0" prefWidth="427.0" text="Создание фильма" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="50.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

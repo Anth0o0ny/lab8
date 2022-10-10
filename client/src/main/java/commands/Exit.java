@@ -14,10 +14,8 @@ public class Exit extends ClientCommand{
 
     @Override
     public Optional<Request> execute(String arg) {
-        if (arg != null) {
-            System.out.println(StringConstants.Commands.CMD_WITHOUT_ARG);
-            return Optional.empty();
-        }
-        throw new NoSuchElementException();
+        Optional<Request> request = clientReceiver.exit();
+        return Optional.empty();
+
     }
 }

@@ -74,6 +74,7 @@ public class ServerMain {
                                 protected void compute() {
                                     if (request.getCommandName().equals("update_table")){
                                         server.sendResponse(serverReceiver.getCollection(), key);
+
                                     } else {
 
 

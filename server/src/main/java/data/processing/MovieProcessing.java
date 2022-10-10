@@ -181,6 +181,7 @@ public class MovieProcessing extends Database implements MovieDAO {
             preparedStatement.setString(14, login);
             result = preparedStatement.executeQuery().next();
         } catch (SQLException throwables) {
+           throwables.printStackTrace();
             System.out.println(StringConstants.Server.CANT_READ_FROM_UPDATE);
         } finally {
             closeStatement(preparedStatement);
@@ -200,7 +201,7 @@ public class MovieProcessing extends Database implements MovieDAO {
         UPDATE("update movies set name = ?, x = ?, y = ?, creation_date = ?, oscars_count = ?, budget = ?, "
                + "tagline = ?, mpaa_rating = ?, person_name = ?, person_height = ?, hair_color = ?, "
                 + "person_nationality = ? where id = ? and login = ? returning id;"),
-        INIT("create table if not exists movies(id serial not null primary key, name varchar(50) not null unique, "
+        INIT("create table if not exists movies(id serial not null primary key, name varchar(50) not null, "
                 + "x double precision not null, y double precision not null, creation_date date, oscars_count bigint, budget bigint, "
                 + "tagline varchar(50), mpaa_rating varchar(50), person_name varchar(50), person_height float, "
                 + "hair_color varchar(50), person_nationality varchar(20), login varchar(50), "

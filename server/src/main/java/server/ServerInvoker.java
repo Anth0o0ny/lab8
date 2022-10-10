@@ -29,14 +29,11 @@ public class ServerInvoker {
     public Optional<Response> execute(Request request){
         String commandName = request.getCommandName();
 
-        //clean
-        System.out.println( request.getLogin() + " " + request.getPassword());
 
-
-//        if (request.getLogin() == null || request.getPassword() == null
-//                || request.getLogin().equals("") && !commandName.equals("authorization")) {
-//            return Optional.of(new Response(StringConstants.Server.CANT_EXECUTE_NOT_AUTH));
-//        }
+        if (request.getLogin() == null || request.getPassword() == null
+                || request.getLogin().equals("") && !commandName.equals("authorization")) {
+            return Optional.of(new Response(StringConstants.Server.CANT_EXECUTE_NOT_AUTH));
+        }
 
         return this.commandsMap.get(commandName).execute(request);
     }
@@ -53,8 +50,6 @@ public class ServerInvoker {
                 return Optional.of(new Help(serverReceiver, getCommandMap()));
             case INFO:
                 return Optional.of(new Info(serverReceiver));
-            case SHOW:
-                return Optional.of(new Show(serverReceiver));
             case ADD:
                 return Optional.of(new Add(serverReceiver));
             case UPDATE:
@@ -77,8 +72,6 @@ public class ServerInvoker {
                 return Optional.of(new RemoveAllByScreenwriter(serverReceiver));
             case GROUP_COUNTING_BY_TAGLINE:
                 return Optional.of(new GroupCountingByTagline(serverReceiver));
-            case PRINT_DESCENDING:
-                return Optional.of(new PrintDescending(serverReceiver));
             case AUTHORIZATION:
                 return Optional.of(new Authorization(serverReceiver));
             default:

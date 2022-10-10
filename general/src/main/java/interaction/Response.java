@@ -3,6 +3,7 @@ package interaction;
 import baseclasses.Movie;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
@@ -12,7 +13,8 @@ public class Response implements Serializable {
 
     private final String message;
     private final String[] answer;
-    private Stack<Movie> collection = null;
+
+    private List<Movie> collection = null;
 
     public Response(String message, String[] answer) {
         this.message = message;
@@ -36,11 +38,11 @@ public class Response implements Serializable {
         return message;
     }
 
-    public Stack<Movie> getCollection() {
+    public List<Movie> getCollection() {
         return collection;
     }
 
-    public void setCollection(Stack<Movie> collection) {
+    public void setCollection(List<Movie> collection) {
         this.collection = collection;
     }
 }

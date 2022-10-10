@@ -9,12 +9,19 @@ import input.InputArgumentTester;
 public class CreatePerson {
     public static Person ctreatePerson() {
         InputArgumentTester iat = new InputArgumentTester();
+        AddSingleton addSingleton = AddSingleton.getAddSingleton();
 
-        Color color = chooseColor();
+//        Color color = chooseColor();
+//
+//        Country country = chooseCountry();
 
-        Country country = chooseCountry();
+//        return new Person(iat.assignInputPersonName(), iat.assignInputHeight(), color, country);
 
-        return new Person(iat.assignInputPersonName(), iat.assignInputHeight(), color, country);
+        String person = addSingleton.getPersonName();
+        Float height = addSingleton.getHeight();
+        Color color = addSingleton.getColor();
+        Country country = addSingleton.getCountry();
+        return new Person(person, height, color, country);
     }
 
     public static Color chooseColor() {

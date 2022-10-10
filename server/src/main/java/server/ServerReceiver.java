@@ -8,6 +8,8 @@ import data.processing.UserProcessing;
 import interaction.Response;
 
 import sub.StringConstants;
+
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -56,10 +58,10 @@ public class ServerReceiver {
                 if (userProcessing.checkExists(login, password)) {
                     return new Response("");
                 } else if (userProcessing.checkImpostor(login, password)) {
-                   return new Response(login + StringConstants.Server.WRONG_PASS_TO_LOGIN);
+                   return new Response("wrong");
                 } else {
                     userProcessing.create(login, password);
-                    return new Response("");
+                    return new Response("new");
                 }
             }finally {
             reentrantLock.unlock();
@@ -83,14 +85,6 @@ public class ServerReceiver {
         return new Response(commandMap.values().stream().map(ServerCommand::getHelp).toArray(String[]::new));
     }
 
-    public Response show() {
-        reentrantLock.lock();
-        try{
-            return new Response(collection.stream().map(Movie::toString).toArray(String[]::new));
-        } finally {
-            reentrantLock.unlock();
-        }
-    }
 
     public Response clear(String login) {
         reentrantLock.lock();
@@ -106,43 +100,8 @@ public class ServerReceiver {
         }
     }
 
-    public Response shuffle() {
-        reentrantLock.lock();
-        try{
-            if (collection.isEmpty()) {
-                return new Response(StringConstants.PatternCommands.RECEIVER_EMPTY_COLLECTION_RESULT);
-            } else {
-                Collections.shuffle(collection);
-                StringBuilder stringBuilder = new StringBuilder();
-                for (Movie movie : collection) {
-                    stringBuilder.append(movie).append("; ");
-                }
-                return new Response(stringBuilder.toString());
-            }
-        } finally {
-            reentrantLock.unlock();
-        }
-    }
 
-    public Response printDescending() {
-        reentrantLock.lock();
-        try{
-            if (collection.isEmpty()) {
-                return new Response(StringConstants.PatternCommands.RECEIVER_EMPTY_COLLECTION_RESULT);
-            } else {
-                Stack<Movie> cl = new Stack<>();
-                cl.addAll(collection);
-                Collections.reverse(cl);
-                StringBuilder stringBuilder = new StringBuilder();
-                for (Movie movie : cl) {
-                    stringBuilder.append(movie).append("; ");
-                }
-                return new Response(stringBuilder.toString());
-            }
-        } finally {
-            reentrantLock.unlock();
-        }
-    }
+
 
     public Response groupCountingByTagline() {
         reentrantLock.lock();
@@ -223,6 +182,7 @@ public class ServerReceiver {
         reentrantLock.lock();
         try {
             if (movie.compareTo(Collections.min(collection)) < 0) {
+
                 long id = movieProcessing.create(movie, login);
                 movie.setId(id);
                 movie.setLogin(login);
@@ -240,17 +200,19 @@ public class ServerReceiver {
         reentrantLock.lock();
         try {
             long id;
-
-            try {
-                id = Long.parseLong(arg);
-            } catch (NumberFormatException e) {
-                return new Response(StringConstants.Server.INVALID_ID);
-            }
+            id = Long.parseLong(arg);
+//            try {
+//
+//            } catch (NumberFormatException e) {
+//                return new Response(StringConstants.Server.INVALID_ID);
+//            }
             if (movieProcessing.update(id, movie, login)){
                 collection.removeIf(movieColl -> movieColl.getId().equals(id));
                 movie.setId(id);
                 movie.setLogin(login);
-                collection.add(movie);
+                collection.push(movie);
+                Collections.sort(collection, new SortById());
+
                 return new Response(StringConstants.PatternCommands.RECEIVER_UPDATE_RESULT + id);
             } else {
                 return new Response(StringConstants.PatternCommands.RECEIVER_UPDATE_WRONG_RESULT);
@@ -290,13 +252,31 @@ public class ServerReceiver {
         }
     }
 
+
+
+    public Response shuffle() {
+        reentrantLock.lock();
+        try{
+            Stack<Movie> movies = movieProcessing.readAll();
+            Collections.shuffle(movies);
+            collection = movies;
+            return new Response(movies.toString());
+        } finally {
+            reentrantLock.unlock();
+        }
+    }
+
     void initCollection(){
         collection = movieProcessing.readAll();
+        Collections.sort(collection, new SortById());
     }
+
     public Response getCollection(){
-        Response response = new Response("");
-        response.setCollection((Stack<Movie>) movieProcessing.readAll());
-        return response;
+        Response collectResponse = new Response("");
+
+        collectResponse.setCollection(collection);
+
+        return collectResponse;
     }
 }
 
