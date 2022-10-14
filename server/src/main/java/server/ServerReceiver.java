@@ -33,48 +33,13 @@ public class ServerReceiver {
 
     }
 
-
-
-    public Response authorization(String login, String password) {
-
-            if (login.isEmpty()) {
-                return new Response(StringConstants.Server.LOGIN_EMPTY);
-            }
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-512");
-                byte[] messageDigest = md.digest(password.getBytes());
-                BigInteger no = new BigInteger(1, messageDigest);
-                String hashtext = no.toString(16);
-                while (hashtext.length() < 32) {
-                    hashtext = "0" + hashtext;
-                }
-                password = hashtext;
-            } catch (NoSuchAlgorithmException e) {
-                System.out.println(StringConstants.Server.WRONG_HASH);
-            }
-
-            reentrantLock.lock();
-            try{
-                if (userProcessing.checkExists(login, password)) {
-                    return new Response("");
-                } else if (userProcessing.checkImpostor(login, password)) {
-                   return new Response("wrong");
-                } else {
-                    userProcessing.create(login, password);
-                    return new Response("new");
-                }
-            }finally {
-            reentrantLock.unlock();
-        }
-    }
-
     public Response info() {
         reentrantLock.lock();
         try{
             String[] information = new String[3];
-            information[0] = StringConstants.PatternCommands.RECEIVER_INFO_TYPE_COLLECTION + collection.getClass();
-            information[1] = StringConstants.PatternCommands.RECEIVER_INFO_AMOUNT + collection.size();
-            information[2] = StringConstants.PatternCommands.RECEIVER_INFO_INITIALIZATION_DATE + creationDate;
+            information[0] = String.valueOf(collection.getClass());
+            information[1] = String.valueOf(collection.size());
+            information[2] = String.valueOf(creationDate);
             return new Response(information);
         } finally {
             reentrantLock.unlock();
@@ -134,11 +99,13 @@ public class ServerReceiver {
             } catch (NumberFormatException e) {
                 return new Response(StringConstants.Server.INVALID_ID);
             }
+
+
             if (movieProcessing.removeById(id, login)) {
                 collection.removeIf(movie -> movie.getId().equals(id));
                 return new Response(id + StringConstants.Server.FILM_DELETE_SUCCESS);
             } else {
-                return new Response(StringConstants.Server.CANT_DELETE_FILM);
+                return new Response("wrong");
             }
         } finally {
             reentrantLock.unlock();
@@ -153,7 +120,7 @@ public class ServerReceiver {
                         movie.getLogin().equals(login));
                 return new Response(StringConstants.PatternCommands.RECEIVER_REMOVE_ALL_BY_SCREENWRITER_RESULT + arg);
             } else {
-                return new Response(StringConstants.PatternCommands.RECEIVER_REMOVE_ALL_BY_SCREENWRITER_WROMG_RESULT + arg);
+                return new Response("wrong");
             }
         } finally {
             reentrantLock.unlock();
@@ -206,6 +173,7 @@ public class ServerReceiver {
 //            } catch (NumberFormatException e) {
 //                return new Response(StringConstants.Server.INVALID_ID);
 //            }
+
             if (movieProcessing.update(id, movie, login)){
                 collection.removeIf(movieColl -> movieColl.getId().equals(id));
                 movie.setId(id);
@@ -215,7 +183,7 @@ public class ServerReceiver {
 
                 return new Response(StringConstants.PatternCommands.RECEIVER_UPDATE_RESULT + id);
             } else {
-                return new Response(StringConstants.PatternCommands.RECEIVER_UPDATE_WRONG_RESULT);
+                return new Response("wrong");
             }
         } finally {
             reentrantLock.unlock();
@@ -278,6 +246,40 @@ public class ServerReceiver {
 
         return collectResponse;
     }
+
+    public Response authorization(String login, String password) {
+
+        if (login.isEmpty()) {
+            return new Response(StringConstants.Server.LOGIN_EMPTY);
+        }
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            password = hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(StringConstants.Server.WRONG_HASH);
+        }
+
+        reentrantLock.lock();
+        try{
+            if (userProcessing.checkExists(login, password)) {
+                return new Response("");
+            } else if (userProcessing.checkImpostor(login, password)) {
+                return new Response("wrong");
+            } else {
+                userProcessing.create(login, password);
+                return new Response("new");
+            }
+        }finally {
+            reentrantLock.unlock();
+        }
+    }
+
 }
 
 

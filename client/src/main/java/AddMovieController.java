@@ -5,12 +5,14 @@ import java.util.ResourceBundle;
 import baseclasses.Color;
 import baseclasses.Country;
 import baseclasses.MpaaRating;
+import input.InputArgumentTester;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import maincontrolleractions.DifferentWindows;
 import moviemaking.AddSingleton;
 
 public class AddMovieController {
@@ -63,64 +65,64 @@ public class AddMovieController {
 
     @FXML
     private Button addButton;
-    ArrayList<MpaaRating> arrayList = new ArrayList<>();
+
+
 
     AddSingleton addSingleton = AddSingleton.getAddSingleton();
+    DifferentWindows differentWindows = new DifferentWindows();
+    InputArgumentTester iat = new InputArgumentTester();
 
     @FXML
     void initialize() {
-
         mpaaRatingField.getItems().addAll(MpaaRating.values());
         hairColorField.getItems().addAll(Color.values());
         nationalityField.getItems().addAll(Country.values());
 
 
 
+
         addButton.setOnAction( event -> {
 
+            String name = movieNameField.getText().trim();
+            String X =  coordinatesXField.getText().trim();
+            String Y = coordinatesYField.getText().trim();
+            String oscars = oscarCountField.getText().trim();
+            String budget = budgetField.getText().trim();
+            String tagline = taglineField.getText().trim();
+            String mpaaRate = String.valueOf(mpaaRatingField.getValue());
+            String personName = screenwriterNameField.getText().trim();
+            String height = heightField.getText().trim();
+            String color = String.valueOf(hairColorField.getValue());
+            String country = String.valueOf(nationalityField.getValue());
 
-                if (assignInputName()) {
-                    System.out.println("Not null");
+            if (name.isEmpty() || X.isEmpty() || Y.isEmpty() || oscars.isEmpty() || budget.isEmpty() || tagline.isEmpty()
+                    || mpaaRate.equals("null") || personName.isEmpty() || height.isEmpty() || color.equals("null") || country.equals("null")){
+                differentWindows.wrongValueWindow("error", "null values", addSingleton.getNullValues());
+                addSingleton.setCanAdd(false);
+            } else {
+                if (iat.assignInputX(X) && iat.assignInputY(Y) && iat.assignInputOscarCount(oscars) &&
+                iat.assignInputBudget(budget) && iat.assignInputHeight(height)){
                     addSingleton.setName(name);
+                    addSingleton.setX(Double.parseDouble(X));
+                    addSingleton.setY(Float.parseFloat(Y));
+                    addSingleton.setOscarCount(Long.parseLong(oscars));
+                    addSingleton.setBudget(Long.parseLong(budget));
+                    addSingleton.setTagline(tagline);
+                    addSingleton.setRate(mpaaRatingField.getValue());
+                    addSingleton.setPersonName(personName);
+                    addSingleton.setHeight(Float.parseFloat(height));
+                    addSingleton.setColor(hairColorField.getValue());
+                    addSingleton.setCountry(nationalityField.getValue());
+                    addSingleton.setCanAdd(true);
+                    addButton.getScene().getWindow().hide();
                 } else {
-                    System.out.println("Null");
-                    wrongNameField.setText("Input not null value");
+                    differentWindows.wrongValueWindow("error", "numerical values", addSingleton.getIncorrectValues());
+                    addSingleton.setCanAdd(false);
                 }
-
-
-//                addSingleton.setName(name);
-                addSingleton.setX(Double.parseDouble( coordinatesXField.getText().trim()));
-                addSingleton.setY(Float.parseFloat(coordinatesYField.getText().trim()));
-                addSingleton.setOscarCount(Long.parseLong(oscarCountField.getText().trim()));
-                addSingleton.setBudget(Long.parseLong(budgetField.getText().trim()));
-                addSingleton.setTagline(taglineField.getText().trim());
-                addSingleton.setRate(mpaaRatingField.getValue());
-
-                addSingleton.setPersonName(screenwriterNameField.getText().trim());
-                addSingleton.setHeight(Float.parseFloat(heightField.getText().trim()));
-                addSingleton.setColor(hairColorField.getValue());
-                addSingleton.setCountry(nationalityField.getValue());
-
-
-            addButton.getScene().getWindow().hide();
+            }
 
         });
 
     }
-
-    boolean nameBoolean;
-    String name = null;
-    public boolean assignInputName(){
-        try {
-            name = movieNameField.getText().trim();
-            if (name.isEmpty()){
-                throw new NumberFormatException();}
-            return true;
-        } catch (NumberFormatException e){
-
-            return false;
-        }
-    }
-
 
 }

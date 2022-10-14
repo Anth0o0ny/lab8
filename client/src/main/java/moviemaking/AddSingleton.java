@@ -5,7 +5,7 @@ import baseclasses.Country;
 import baseclasses.MpaaRating;
 
 public class AddSingleton {
-    private  static final AddSingleton ADD_SINGLETON = new AddSingleton();
+    private static final AddSingleton ADD_SINGLETON = new AddSingleton();
     private String name;
     private Double x;
     private Float y;
@@ -18,10 +18,42 @@ public class AddSingleton {
     private Color color;
     private Country country;
 
-    private AddSingleton(){}
+
+    private boolean canAdd;
+    private String nullValues;
+    private String incorrectValues;
+
+    private AddSingleton() {
+    }
+
+    public static AddSingleton getAddSingleton() {
+        return ADD_SINGLETON;
+    }
 
 
-    public static AddSingleton getAddSingleton(){return ADD_SINGLETON;}
+    public boolean isCanAdd() {
+        return canAdd;
+    }
+
+    public void setCanAdd(boolean canAdd) {
+        this.canAdd = canAdd;
+    }
+
+    public String getNullValues() {
+        return nullValues;
+    }
+
+    public void setNullValues(String nullValues) {
+        this.nullValues = nullValues;
+    }
+
+    public String getIncorrectValues() {
+        return incorrectValues;
+    }
+
+    public void setIncorrectValues(String incorrectValues) {
+        this.incorrectValues = incorrectValues;
+    }
 
     public String getName() {
         return name;
@@ -94,6 +126,7 @@ public class AddSingleton {
     public void setHeight(Float height) {
         this.height = height;
     }
+
 
     public Color getColor() {
         return color;

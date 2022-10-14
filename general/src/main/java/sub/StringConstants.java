@@ -3,17 +3,9 @@ package sub;
 public class StringConstants {
 
     public class StartTreatment {
-        public final static String COMMAND_NOT_EXISTS = "Команды не существует.";
-        public final static String ENTER_COMMAND = "Введите команду:";
-        public final static String EXECUTE_FAILED = "В файле найдена несуществующая команда. Выполнение прекращено.";
-        public final static String AUTH_ENTER_LOGIN = "Введите логин:";
-        public final static String AUTH_ENTER_PASS = "Введите пароль:";
 
-        public final static String ASK_TO_AUTH = "Вы хотите авторизоваться? ";
-        public final static String Y_OR_N = "[y/n]";
         public final static String ENTER_IN_SYSTEM_BY_NAME = "Вы вошли в систему под именем:";
-        public final static String ENTER_IN_SYSTEM_BY_GUEST = "Вы вошли в систему как гость";
-    }
+         }
 
     public class Commands {
         public final static String CMD_WITH_ARG = "Введите команду с аргументом.";

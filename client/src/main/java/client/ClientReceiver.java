@@ -1,6 +1,7 @@
 package client;
 
-import input.InputArgumentTester;
+//import input.InputArgumentTester;
+import baseclasses.Movie;
 import interaction.Request;
 import moviemaking.AddMovie;
 
@@ -9,19 +10,14 @@ import java.util.Optional;
 public class ClientReceiver {
 
 
-      private final InputArgumentTester inputArgumentTester;
+
       private final AddMovie addMovie;
 
     public ClientReceiver() {
         this.addMovie = new AddMovie();
-        inputArgumentTester = new InputArgumentTester();
     }
 
     public Optional<Request> removeById(String arg) {
-        Long id = inputArgumentTester.assignInputId(arg);
-        if (id == null) {
-            return Optional.empty();
-        }
         return Optional.of(new Request("remove_by_id", arg));
     }
 
@@ -45,7 +41,6 @@ public class ClientReceiver {
 
     public Optional<Request> add() {
         return Optional.of(new Request("add", AddMovie.makeMovie()));
-
     }
 
     public Optional<Request> addIfMin() {
@@ -53,7 +48,6 @@ public class ClientReceiver {
     }
 
     public Optional<Request> update(String arg){
-        Long id = inputArgumentTester.assignInputId(arg);
         return  Optional.of(new Request("update", arg, AddMovie.makeMovie()));
     }
 

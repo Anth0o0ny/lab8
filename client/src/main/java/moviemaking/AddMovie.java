@@ -4,7 +4,7 @@ import baseclasses.Coordinates;
 import baseclasses.Movie;
 import baseclasses.MpaaRating;
 import baseclasses.Person;
-import input.InputArgumentTester;
+//import input.InputArgumentTester;
 
 import java.util.Date;
 
@@ -13,19 +13,6 @@ public class AddMovie {
 
     public static Movie makeMovie() {
         AddSingleton addSingleton = AddSingleton.getAddSingleton();
-        InputArgumentTester iat = new InputArgumentTester();
-
-//        String name = iat.assignInputName();
-//        System.out.println(name);
-//        Double x = iat.assignInputX();
-//        Float y = iat.assignInputY();
-//        Coordinates coordinates = new Coordinates(x, y);
-//        Date date = new Date();
-//        Long oscCount = iat.assignInputOscarCount();
-//        long budget = iat.assignInputBudget();
-//        String tagline = iat.assignTagline();
-//        MpaaRating rate = CreatePerson.chooseRating();
-//        Person person = CreatePerson.ctreatePerson();
 
         String name = addSingleton.getName();
         Double x = addSingleton.getX();
@@ -36,7 +23,7 @@ public class AddMovie {
         long budget = addSingleton.getBudget();
         String tagline = addSingleton.getTagline();
         MpaaRating rate = addSingleton.getRate();
-        Person person = CreatePerson.ctreatePerson();
+        Person person = CreatePerson.createPerson();
         return new Movie( name, coordinates, creationDate, oscCount, budget, tagline, rate, person);
     }
 }

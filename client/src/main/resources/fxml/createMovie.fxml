@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="873.0" style="-fx-background-color: #3B3B3B;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMovieController">
+<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="873.0" style="-fx-background-color: #3B3B3B;" xmlns="http://javafx.com/javafx/8.0.202-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddMovieController">
    <children>
       <AnchorPane layoutY="125.0" prefHeight="659.0" prefWidth="873.0" style="-fx-background-color: #858585;">
          <children>
@@ -105,16 +105,10 @@
                </font>
             </Button>
             <Label fx:id="wrongNameField" layoutX="221.0" layoutY="72.0" textFill="RED" />
-            <Label layoutX="221.0" layoutY="125.0" text="Label" textFill="RED" />
-            <Label layoutX="423.0" layoutY="125.0" text="Label" textFill="RED" />
-            <Label layoutX="221.0" layoutY="176.0" text="Label" textFill="RED" />
-            <Label layoutX="221.0" layoutY="227.0" text="Label" textFill="RED" />
-            <Label layoutX="221.0" layoutY="277.0" text="Label" textFill="RED" />
-            <Label layoutX="221.0" layoutY="401.0" text="Label" textFill="RED" />
-            <Label layoutX="221.0" layoutY="457.0" text="Label" textFill="RED" />
+            <Label layoutX="221.0" layoutY="125.0" textFill="RED" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="14.0" prefHeight="95.0" prefWidth="427.0" text="Создание фильма" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="14.0" prefHeight="95.0" prefWidth="427.0" text="Movie making " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="50.0" />
          </font>

@@ -1,14 +1,16 @@
-public class DataSingleton {
-    private static final DataSingleton INSTANCE = new DataSingleton();
+public class AuthSingleton {
+    private static final AuthSingleton INSTANCE = new AuthSingleton();
 
     private String login;
     private String password;
+    private String language;
 
-    private DataSingleton(){}
+    private AuthSingleton(){}
 
-    public static DataSingleton getInstance(){
+    public static AuthSingleton getInstance(){
         return INSTANCE;
     }
+
 
     public String getLogin() {
         return login;

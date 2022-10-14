@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="297.0" style="-fx-background-color: #3B3B3B;" xmlns="http://javafx.com/javafx/1.8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="297.0" style="-fx-background-color: #3B3B3B;" xmlns="http://javafx.com/javafx/8.0.202-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstController">
    <children>
-      <AnchorPane layoutY="87.0" prefHeight="225.0" prefWidth="296.0" style="-fx-background-color: #858585;">
+      <AnchorPane layoutX="1.0" layoutY="86.0" prefHeight="225.0" prefWidth="296.0" style="-fx-background-color: #858585;">
          <children>
             <PasswordField fx:id="passButton" layoutX="73.0" layoutY="87.0" promptText="Password" />
-            <TextField fx:id="loginButton" layoutX="73.0" layoutY="38.0" promptText="Login" />
-            <Button fx:id="registerButton" layoutX="73.0" layoutY="137.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="login" />
+            <TextField fx:id="loginButton" layoutX="73.0" layoutY="48.0" promptText="Login" />
+            <Button fx:id="registerButton" layoutX="73.0" layoutY="148.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="login" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="21.0" prefHeight="50.0" prefWidth="268.0" text="Authorization" textFill="WHITE">
